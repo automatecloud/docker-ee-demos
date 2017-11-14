@@ -1,0 +1,21 @@
+version: '3.3'
+services:
+    windowsiis:
+        image: automatecloud/windowsauthentication
+        hostname: containerhost
+        credential_spec:
+            file: win.json
+        deploy:
+            endpoint_mode: dnsrr
+            placement:
+              constraints:
+                - 'node.platform.os == windows'
+        ports:
+            - mode: host
+              target: 80
+              published: 8085
+        networks:
+            - windowsauthentication
+
+networks:
+    windowsauthentication:
