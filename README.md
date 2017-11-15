@@ -11,7 +11,7 @@ This repository includes all the things you need to do a Docker Enterprise Demo 
 
 ## Version
 
-This version includes all the content you need to do a Docker Enterprise 17.06 demo.
+This version includes all the content you need to do a Docker Enterprise 17.06 and above demo.
 
 ## Contribution
 
