@@ -1,0 +1,14 @@
+version: '3.1'
+services:
+    my_tweet_app:
+        image: e2-automatecloud.westeurope.cloudapp.azure.com/docker/my-tweet-app:latest
+        deploy:
+            mode: replicated
+            replicas: 2
+        ports:
+            - 8087:5000
+        networks:
+            - my_tweet_app
+
+networks:
+    my_tweet_app:
