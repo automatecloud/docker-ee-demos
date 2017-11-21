@@ -1,0 +1,28 @@
+before_script:
+  - docker info
+  - docker version
+  - docker image rm e2-automatecloud.westeurope.cloudapp.azure.com/docker/my-tweet-app:latest
+
+build_image:
+  script:
+    - d=`date +%y%m%d%H%M%S`
+    - pw=`cat /home/gitlab-runner/password`
+    - ctroot=`cat /home/gitlab-runner/DOCKER_CONTENT_TRUST_ROOT_PASSPHRASE`
+    - ctrepo=`cat /home/gitlab-runner/DOCKER_CONTENT_TRUST_REPOSITORY_PASSPHRASE`
+    - export DOCKER_CONTENT_TRUST=1
+    - export DOCKER_CONTENT_TRUST_ROOT_PASSPHRASE=$ctroot
+    - export DOCKER_CONTENT_TRUST_REPOSITORY_PASSPHRASE=$ctrepo
+    - echo $d
+    - docker build -t my-tweet-app:$d .
+    - echo "Starting with CI Pipeline..."
+    - docker tag my-tweet-app:$d e2-automatecloud.westeurope.cloudapp.azure.com/docker/my-tweet-app:$d
+    - docker tag my-tweet-app:$d e2-automatecloud.westeurope.cloudapp.azure.com/docker/my-tweet-app:latest
+    - docker images
+    - docker login e2-automatecloud.westeurope.cloudapp.azure.com -u ci-pipeline -p $pw
+    - docker push e2-automatecloud.westeurope.cloudapp.azure.com/docker/my-tweet-app:$d
+    - docker push e2-automatecloud.westeurope.cloudapp.azure.com/docker/my-tweet-app:latest
+    - echo "Starting with CD Pipeline..."
+    - cd /home/gitlab-runner/bundle
+    - eval $(<env.sh)
+    - docker version
+    - docker service update --detach=false --image e2-automatecloud.westeurope.cloudapp.azure.com/docker/my-tweet-app:$d demo-ci_my_tweet_app
