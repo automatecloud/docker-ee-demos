@@ -25,7 +25,7 @@ Before you plan to do the demo make sure the following is configured correctly:
 
 ## Runbook
 
-1. Show the GUI
+1. **Show the GUI**
 
 * Show the Logo inside the Mac menu bar:
   * Show that Docker is running
@@ -33,7 +33,7 @@ Before you plan to do the demo make sure the following is configured correctly:
 * Show the About Docker menu and all the componentes installed.
 * Show how easy it is to enable Kubernetes with Docker for Mac at Preferences > Kubernetes.
 
-2. Describe the benefits
+2. **Describe the benefits**
 
 * Docker for Mac is a single container platform with Kube cluster built-in
 * You can now choose between Docker swarm mode and kubernetes
@@ -41,19 +41,19 @@ Before you plan to do the demo make sure the following is configured correctly:
 * You can use the concepts of stacks with kubernetes
 * You can use Docker compose files or kubernetes manifests
 
-3. Show the current environment from CLI
+3. **Show the current environment from CLI**
 
 * Show that you are using the latest client and latest docker engine locally ```docker version```
 * Show the current container up and running ```docker container ls```
 * Show that there is no pod up and running with kubectl ```kubectl get pods```
 
-4. Show and explain the Demo app from DockerCon EU 2017
+4. **Show and explain the Demo app from DockerCon EU 2017**
 
 * Explain that there are two ways now to deploy the app
   * First is by using a Stack with the docker-compose.yml file
   * Second option is using a Kubernetes manifests file kube-deployment.yaml.
 
-5. Start with the Docker Stack deployment on Kubernetes
+5. **Start with the Docker Stack deployment on Kubernetes**
 
 * Show the simple docker-compose.yml
 * There is a database service db
@@ -89,7 +89,7 @@ Before you plan to do the demo make sure the following is configured correctly:
 * Explain that this is great because now you can use the latest features of Docker Engine with Kubernetes like the multi stage build. Most of the current solutions out there using old versions of Docker engine.
 * remove the current stack by using ```docker stack rm words1```
 
-6. Show the Deployment from a kubernetes manifest
+6. **Show the Deployment from a kubernetes manifest**
 
 * Show the kube-deployment.yaml 
 * It describes the same application in Kubernetes format.
@@ -106,7 +106,7 @@ Before you plan to do the demo make sure the following is configured correctly:
 * But you will see the containers running in the Kubernetes pods by using ```docker container ls```
 * Open the application by open a browser on port 80 or just using localhost
 
-7. Show the same app running in Docker swarm
+7. **Show the same app running in Docker swarm**
 
 * Docker for Mac also has Docker swarm mode build in. You can run also in swarm mode.
 * Change the docker cli to use swarm as orchestrator by exporting the environment variable with ```export DOCKER_ORCHESTRATOR='swarm'```
