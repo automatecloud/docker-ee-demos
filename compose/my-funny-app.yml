@@ -1,0 +1,35 @@
+version: '3.3'
+services:
+    my-funny-app:
+        image: andreasl-demo-dtr-lb-80c218789f27e535.elb.eu-central-1.amazonaws.com/docker/my-funny-app:180109205219
+        deploy:
+            mode: replicated
+            replicas: 3
+            update_config:
+              parallelism: 1
+              delay: 2s
+              max_failure_ratio: 0.2
+              failure_action: pause
+              #  order: stop-first
+            restart_policy:
+              condition: on-failure
+              delay: 5s
+              max_attempts: 1
+              window: 0s
+            labels:
+                com.docker.ucp.mesh.http.5000: "external_route=http://my-funny-app.andreasdemo.de,internal_port=5000"
+                com.docker.ucp.access.label: /Development
+        healthcheck:
+          interval: 5s
+          timeout: 1s
+          retries: 3
+        ports:
+            - 8087:5000
+        networks:
+            - my-funny-app
+            - ucp-hrm
+
+networks:
+    my-funny-app:
+    ucp-hrm:
+        external: true
