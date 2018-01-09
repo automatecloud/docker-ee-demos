@@ -1,0 +1,100 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: db
+  labels:
+    app: words-db
+spec:
+  ports:
+    - port: 5432
+      name: db
+  selector:
+    app: words-db
+  clusterIP: None
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: db
+  labels:
+    app: words-db
+spec:
+  template:
+    metadata:
+      labels:
+        app: words-db
+    spec:
+      containers:
+      - name: db
+        image: dockersamples/words-db
+        ports:
+        - containerPort: 5432
+          name: db
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: words
+  labels:
+    app: words-api
+spec:
+  ports:
+    - port: 80
+      name: api
+  selector:
+    app: words-api
+  clusterIP: None
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: words
+  labels:
+    app: words-api
+spec:
+  replicas: 5
+  template:
+    metadata:
+      labels:
+        app: words-api
+    spec:
+      containers:
+      - name: words
+        image: dockersamples/words-api
+        ports:
+        - containerPort: 80
+          name: api
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web
+  labels:
+    app: words-web
+spec:
+  ports:
+    - port: 80
+      nodePort: 30001
+      name: web
+  selector:
+    app: words-web
+  type: LoadBalancer
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: web
+  labels:
+    app: words-web
+spec:
+  template:
+    metadata:
+      labels:
+        app: words-web
+    spec:
+      containers:
+      - name: web
+        image: dockersamples/words-web
+        ports:
+        - containerPort: 80
+          name: words-web

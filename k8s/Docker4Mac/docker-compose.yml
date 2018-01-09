@@ -1,0 +1,19 @@
+version: '3.3'
+
+services:
+
+  db:
+    build: db
+    image: dockersamples/words-db
+
+  words:
+    build: words
+    image: dockersamples/words-api
+    deploy:
+      replicas: 5
+
+  web:
+    build: web
+    image: dockersamples/words-web
+    ports:
+     - "8080:80"
