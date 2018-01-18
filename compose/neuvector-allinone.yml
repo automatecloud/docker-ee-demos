@@ -1,0 +1,22 @@
+version: '2.1'
+services:
+  allinone:
+    image: neuvector/allinone
+    container_name: allinone
+    privileged: true
+    restart: always
+    environment:
+      - CLUSTER_JOIN_ADDR=x.x.x.x
+    ports:
+      - 8443:8443/tcp
+      - 10443:10443/tcp
+      - 18300:18300/tcp
+      - 18301:18301/tcp
+      - 18301:18301/udp
+      - 18400:18400/tcp
+      - 18401:18401/tcp
+    volumes:
+      - /var/neuvector:/var/neuvector:rw
+      - /var/run/docker.sock:/var/run/docker.sock:rw
+      - /proc:/host/proc:ro
+      - /sys/fs/cgroup:/host/cgroup:ro
