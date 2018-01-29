@@ -1,14 +1,14 @@
-# Docker Trusted Registry Runbook
+# Docker Trusted Registry - Default Demo Runbook
 This file describes the default step by step runbook to do a demo of Docker Trusted Registry
 
 ## Version 
-This runbook was tested with Docker Trusted Registry 2.4.0 (November 2017).
+This runbook was tested with Docker Trusted Registry 2.4.1 (last checked 9th of January 2017).
 
 ## Preparation steps
 
 To be able to do this demo you need to do the following configuration steps with your Docker Trusted Registry installation upfront:
 
-* Create restricted users
+* TBD
 
 You could also use the following configuration script to create a default configuration for demo.
 
@@ -22,7 +22,15 @@ Before you plan to do the demo make sure the following is configured correctly:
 
 ## Runbook
 
-1. Image Management
+1. Administration
+
+Login as admin user:
+
+* Show Organizations and Users. Explain the connection to UCP
+* Show the Repositories and explan namespaces and repository names.
+* 
+
+2. Image Management
 
 Login as a restricted user:
 
