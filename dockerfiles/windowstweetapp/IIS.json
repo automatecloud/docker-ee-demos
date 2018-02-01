@@ -1,0 +1,56 @@
+{
+    "AspNet35Status":  "Absent",
+    "ApplicationPools":  {
+                             "applicationPools":  "DefaultAppPool",
+                             "applicationPoolDefaults":  {
+                                                             "managedRuntimeVersion":  "v4.0",
+                                                             "processModel":  {
+                                                                                  "identityType":  "ApplicationPoolIdentity"
+                                                                              }
+                                                         }
+                         },
+    "ApplicationDefaults":  [
+
+                            ],
+    "SiteDefaults":  [
+                         [
+
+                         ],
+                         [
+
+                         ]
+                     ],
+    "Websites":  [
+                     {
+                         "Name":  "Default Web Site",
+                         "ID":  "1",
+                         "Applications":  [
+                                              {
+                                                  "Path":  "/",
+                                                  "ApplicationPool":  null,
+                                                  "VirtualDirectories":  [
+                                                                             {
+                                                                                 "Path":  "/",
+                                                                                 "PhysicalPath":  "C:\\inetpub\\wwwroot"
+                                                                             }
+                                                                         ]
+                                              }
+                                          ],
+                         "Bindings":  [
+                                          {
+                                              "Protocol":  "http",
+                                              "BindingInformation":  "*:80:"
+                                          }
+                                      ]
+                     }
+                 ],
+    "AspNetStatus":  "Absent",
+    "FeatureName":  "IIS-CommonHttpFeatures;IIS-DefaultDocument;IIS-DirectoryBrowsing;IIS-HealthAndDiagnostics;IIS-HttpCompressionStatic;IIS-HttpErrors;IIS-HttpLogging;IIS-Performance;IIS-RequestFiltering;IIS-Security;IIS-StaticContent;IIS-WebServer;IIS-WebServerRole",
+    "VirtualDirectoryDefaults":  [
+
+                                 ],
+    "Status":  "Present",
+    "HttpHandlers":  [
+
+                     ]
+}
