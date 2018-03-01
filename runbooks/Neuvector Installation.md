@@ -1,6 +1,6 @@
-# Installation Neuvector (Version 1.3.0)
+# Installation Neuvector (Version 1.3.3)
 
-Installation of Neuvector 1.3.0 with Docker Enterprise 17.06
+Installation of Neuvector 1.3.3 with Docker Enterprise 17.06
 
 Login to your Master and install the Neuvector AllinOne solution by using docker run command. Please make sure to replace the IP x.x.x.x address with the IP of your Master Node:
 ```
